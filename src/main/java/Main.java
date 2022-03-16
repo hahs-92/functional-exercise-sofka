@@ -7,32 +7,9 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static void main(String[] args) {
-        Invoice factura = new Invoice(
-                "TV",678,
-                4,
-                LocalDate.of(2021,8,31),
-                "FXBFK"
-        );
-        Invoice factura2 = new Invoice(
-                "Wifi",
-                6,
-                3,
-                LocalDate.of(2020,7,13),
-                "GFHJK"
-        );
-        Invoice factura3 = new Invoice(
-                "hi",
-                208,
-                2,
-                LocalDate.of(2022,2,12),
-                "AJDJK"
-                );
 
-        List<Invoice> invoiceList = List.of(
-                factura,
-                factura2,
-                factura3
-        );
+
+        List<Invoice> invoiceList = Generate.generateListInvoices();
 
         //filtros
 
@@ -56,6 +33,8 @@ public class Main {
                 .filter(i -> i.getDate().isAfter(LocalDate.of(2021,1,1)))
                 .collect(Collectors.toList());
 
+
+        //output
 
         System.out.println("invoicesPriceLessThan100: " + invoicesPriceLessThan100);
         System.out.println("invoicesCuantityGreatherThan2. " + invoicesCuantityGreatherThan2);
